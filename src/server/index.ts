@@ -1,4 +1,20 @@
+import amqp from "amqplib";
+
+
 async function main() {
+  const rabbitConnString = "amqp://guest:guest@localhost:5672/";
+  const conn = await amqp.connect(rabbitConnString);
+
+  if (!conn) {
+    throw new Error("Could not connect to RabbitMQ");
+  }
+  console.log("Connected to RabbitMQ");
+  const channel = await conn.createChannel();
+  if (!channel) {
+    throw new Error("Could not create RabbitMQ channel");
+  }
+  console.log("RabbitMQ channel created");
+
   console.log("Starting Peril server...");
 }
 
