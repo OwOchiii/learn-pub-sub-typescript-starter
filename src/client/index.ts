@@ -1,4 +1,5 @@
 import amqp from "amqplib";
+import {clientWelcome} from "../internal/gamelogic/gamelogic.js";
 
 async function main() {
   const rabbitConnString = "amqp://guest:guest@localhost:5672/";
@@ -12,9 +13,9 @@ async function main() {
   if (!channel) {
     throw new Error("Could not create RabbitMQ channel");
   }
-
   console.log("RabbitMQ channel created");
-  
+
+  const username = await clientWelcome();
 
   console.log("Starting Peril client...");
 }
