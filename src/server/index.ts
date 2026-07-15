@@ -15,6 +15,12 @@ async function main() {
   }
   console.log("RabbitMQ channel created");
 
+  const confirmChannel = await conn.createConfirmChannel();
+  if (!confirmChannel) {
+    throw new Error("Could not create RabbitMQ confirm channel");
+  }
+  console.log("RabbitMQ confirm channel created");
+
   console.log("Starting Peril server...");
 }
 
