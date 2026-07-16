@@ -1,4 +1,5 @@
-import amqp, { Channel } from "amqplib";
+import amqp from "amqplib";
+import type { Channel } from "amqplib";
 
 export async function declareAndBind(
     conn: amqp.ChannelModel,
